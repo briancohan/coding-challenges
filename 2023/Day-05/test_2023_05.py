@@ -53,4 +53,4 @@ def test_correct_answer_part_2():
     assert result == expected
 
 
-# Part 2 =
+# Part 2 = 26714516
