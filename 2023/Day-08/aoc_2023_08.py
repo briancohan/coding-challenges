@@ -1,4 +1,3 @@
-import logging
 import re
 from math import lcm
 from pathlib import Path
@@ -7,13 +6,6 @@ from typing import NewType
 Turns = NewType("LR", str)
 Nodes = NewType("Nodes", dict[str, dict[str, str]])
 Data = NewType("Data", tuple[Turns, Nodes])
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(message)s",
-    filename=Path(__file__).with_suffix(".log"),
-    filemode="w",
-)
 
 
 def parse_input(full: bool = True, file_name: Path = None) -> Data:
