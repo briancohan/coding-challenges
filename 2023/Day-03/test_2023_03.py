@@ -1,33 +1,24 @@
-import pytest
-import day03
+import aoc_2023_03 as challenge
 
-sample_input = """
-467..114..
-...*......
-..35..633.
-......#...
-617*......
-.....+.58.
-..592.....
-......755.
-...$.*....
-.664.598..
-"""
+sample_input = challenge.parse_input(full=False)
+full_input = challenge.parse_input()
 
 
-def test_correct_answer_part_1():
-    result = day03.part_1(sample_input)
-    expected = 4361
-    assert result == expected
+def test_part_1_sample_input():
+    result = challenge.part_1(sample_input)
+    assert result == 4361
 
 
-# Part 1 = 544433
+def test_part_1_full_input():
+    result = challenge.part_1(full_input)
+    assert result == 544433
 
 
-def test_correct_answer_part_2():
-    result = day03.part_2(sample_input)
-    expected = 467835
-    assert result == expected
+def test_part_2_sample_input():
+    result = challenge.part_2(sample_input)
+    assert result == 467835
 
 
-# Part 2 = 76314915
+def test_part_2_full_input():
+    result = challenge.part_2(full_input)
+    assert result == 76314915

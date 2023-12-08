@@ -1,25 +1,24 @@
-import pytest
-import day06 as day
+import aoc_2023_06 as challenge
 
-sample_input = """
-Time:      7  15   30
-Distance:  9  40  200
-"""
+sample_input = challenge.parse_input(full=False)
+full_input = challenge.parse_input()
 
 
-def test_correct_answer_part_1():
-    result = day.part_1(sample_input)
-    expected = 288
-    assert result == expected
+def test_part_1_sample_input():
+    result = challenge.part_1(sample_input)
+    assert result == 288
 
 
-# Part 1 = 32076
+def test_part_1_full_input():
+    result = challenge.part_1(full_input)
+    assert result == 32076
 
 
-def test_correct_answer_part_2():
-    result = day.part_2(sample_input)
-    expected = 71503
-    assert result == expected
+def test_part_2_sample_input():
+    result = challenge.part_2(sample_input)
+    assert result == 71503
 
 
-# Part 2 = 34278221
+def test_part_2_full_input():
+    result = challenge.part_2(full_input)
+    assert result == 34278221

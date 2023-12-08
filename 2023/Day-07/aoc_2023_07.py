@@ -1,4 +1,3 @@
-import logging
 from collections import Counter
 from functools import cmp_to_key, partial
 from itertools import zip_longest
@@ -6,13 +5,6 @@ from pathlib import Path
 from typing import NewType
 
 Data = NewType("Data", list[tuple[str, int]])
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(message)s",
-    filename=Path(__file__).with_suffix(".log"),
-    filemode="w",
-)
 
 
 def parse_input(full: bool = True, file_name: Path = None) -> Data:

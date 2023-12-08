@@ -1,15 +1,17 @@
-from pathlib import Path
-import logging
-from collections import defaultdict
 import re
+from collections import defaultdict
 from math import prod
+from pathlib import Path
+from typing import NewType
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(message)s",
-    filename=Path(__file__).with_suffix(".log"),
-    filemode="w",
-)
+Data = NewType("Data", str)
+
+
+def parse_input(full: bool = True, file_name: Path = None) -> Data:
+    if file_name is None:
+        file_name = "input.txt" if full else "sample.txt"
+    input_file = Path(__file__).parent / file_name
+    return input_file.read_text().strip()
 
 
 def is_valid_number(span: tuple[int, int], data: str, cols: int) -> bool:
@@ -49,7 +51,6 @@ def possible_gear(span: tuple[int, int], data: str, cols: int) -> tuple[int, int
 
 
 def part_1(data):
-    data = data.strip()
     # Add one to account for the newline character
     cols = data.index("\n") + 1
 
@@ -61,7 +62,6 @@ def part_1(data):
 
 
 def part_2(data):
-    data = data.strip()
     # Add one to account for the newline character
     cols = data.index("\n") + 1
 
@@ -76,8 +76,7 @@ def part_2(data):
 
 
 if __name__ == "__main__":
-    input_file = Path(__file__).parent / "input.txt"
-    data = input_file.read_text()
+    data = parse_input()
 
-    print(part_1(data))
-    print(part_2(data))
+    print(f"Part 1: {part_1(data)}")
+    print(f"Part 2: {part_2(data)}")

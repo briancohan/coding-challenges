@@ -1,18 +1,15 @@
+from math import ceil, floor, prod, sqrt
 from pathlib import Path
-import logging
-from math import sqrt, ceil, floor, prod
+from typing import NewType
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(message)s",
-    filename=Path(__file__).with_suffix(".log"),
-    filemode="w",
-)
+Data = NewType("Data", dict[str, list[int]])
 
 
-def parse_data(data: str) -> dict[str, list[int]]:
+def parse_input(full: bool = True) -> Data:
+    input_file = Path(__file__).parent / ("input.txt" if full else "sample.txt")
+
     races = {}
-    for line in data.strip().splitlines():
+    for line in input_file.read_text().strip().splitlines():
         metric, values = line.split(":")
         races[metric.lower()] = list(map(int, values.split()))
 
@@ -25,11 +22,11 @@ def ways_to_win(t: int, d: int) -> int:
     return max_delay - min_delay + 1
 
 
-def part_1(data: dict[str, list[int]]) -> int:
+def part_1(data: Data) -> int:
     return prod([ways_to_win(t, d) for t, d in zip(data["time"], data["distance"])])
 
 
-def part_2(data: dict[str, list[int]]) -> int:
+def part_2(data: Data) -> int:
     return ways_to_win(
         int("".join(map(str, data["time"]))),
         int("".join(map(str, data["distance"]))),
@@ -37,9 +34,7 @@ def part_2(data: dict[str, list[int]]) -> int:
 
 
 if __name__ == "__main__":
-    input_file = Path(__file__).parent / "input.txt"
-    data = input_file.read_text()
-    data = parse_data(data)
+    data = parse_input()
 
-    print(part_1(data))
-    print(part_2(data))
+    print(f"Part 1: {part_1(data)}")
+    print(f"Part 2: {part_2(data)}")
