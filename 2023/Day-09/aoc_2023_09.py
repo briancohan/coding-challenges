@@ -15,15 +15,12 @@ def parse_input(full: bool = True, file_name: Path = None) -> Data:
     ]
 
 
-def get_next(numbers: tuple[int], forecast: bool = True) -> int:
+def get_next(numbers: tuple[int]) -> int:
     next_line = tuple(b - a for a, b in zip(numbers, numbers[1:]))
-    if all(i == 0 for i in next_line):
-        return numbers[-1] if forecast else numbers[0]
+    if not any(next_line):
+        return numbers[-1]
     else:
-        if forecast:
-            return get_next(next_line, forecast) + numbers[-1]
-        else:
-            return numbers[0] - get_next(next_line, forecast)
+        return get_next(next_line) + numbers[-1]
 
 
 def part_1(data: Data) -> int:
@@ -31,7 +28,7 @@ def part_1(data: Data) -> int:
 
 
 def part_2(data: Data) -> int:
-    return sum(get_next(numbers, False) for numbers in data)
+    return sum(get_next(numbers[::-1]) for numbers in data)
 
 
 if __name__ == "__main__":
