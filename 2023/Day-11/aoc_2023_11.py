@@ -27,8 +27,8 @@ def expand_universe(data: Data, distance: int = 1) -> Data:
 
     galaxies = [
         [
-            i + (len([r for r in void_rows if r < i]) * distance),
-            j + (len([c for c in void_cols if c < j]) * distance),
+            i + (len([r for r in void_rows if r < i]) * (distance - 1)),
+            j + (len([c for c in void_cols if c < j]) * (distance - 1)),
         ]
         for (i, j) in data
     ]
@@ -40,13 +40,13 @@ def distance(a: list[int], b: list[int]) -> int:
     return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
 
-def part_1(data: Data, expand: int = 1) -> int:
+def part_1(data: Data, expand: int = 2) -> int:
     galaxies = expand_universe(data, expand)
     return sum([distance(a, b) for a, b in combinations(galaxies, 2)])
 
 
 def part_2(data: Data, expand: int = 1000000) -> int:
-    galaxies = expand_universe(data, expand - 1)
+    galaxies = expand_universe(data, expand)
     return sum([distance(a, b) for a, b in combinations(galaxies, 2)])
 
 
