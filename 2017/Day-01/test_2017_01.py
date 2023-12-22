@@ -6,7 +6,7 @@ full_input = challenge.parse_input()
 
 def test_part_1_sample_input():
     result = challenge.part_1(sample_input)
-    assert result == 0
+    assert result == 9
 
 
 def test_part_1_full_input():
@@ -16,9 +16,9 @@ def test_part_1_full_input():
 
 def test_part_2_sample_input():
     result = challenge.part_2(sample_input)
-    assert result == 0
+    assert result == 6
 
 
 def test_part_2_full_input():
     result = challenge.part_2(full_input)
-    assert result == 0
+    assert result == 1194
