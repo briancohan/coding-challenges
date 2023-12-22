@@ -1,36 +1,44 @@
-import json
-import logging
 from pathlib import Path
 from typing import NewType
 
 Data = NewType("Data", list[str])
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(message)s",
-    filename=Path(__file__).with_suffix(".log"),
-    filemode="w",
-)
 
 
 def parse_input(full: bool = True, file_name: Path = None) -> Data:
     if file_name is None:
         file_name = "input.txt" if full else "sample.txt"
     input_file = Path(__file__).parent / file_name
-    return input_file.read_text().strip().splitlines()
+    return input_file.read_text().strip().split(", ")
 
 
 def part_1(data: Data) -> int:
-    return 0
+    nesw = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
+    x = y = d = 0
+    for i in data:
+        d = (d + (1 if i[0] == "R" else -1)) % 4
+        x += nesw[d][0] * int(i[1:])
+        y += nesw[d][1] * int(i[1:])
+    return abs(x) + abs(y)
 
 
 def part_2(data: Data) -> int:
-    return 0
+    nesw = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
+    locations = []
+    x = y = d = 0
+    for i in data:
+        d = (d + (1 if i[0] == "R" else -1)) % 4
+        for _ in range(int(i[1:])):
+            x += nesw[d][0]
+            y += nesw[d][1]
+            if (x, y) in locations:
+                return abs(x) + abs(y)
+            locations.append((x, y))
 
 
 if __name__ == "__main__":
-    data = parse_input(False)
-    logging.debug(json.dumps(data, indent=4))
+    data = parse_input()
 
     print(f"Part 1: {part_1(data)}")
     print(f"Part 2: {part_2(data)}")
