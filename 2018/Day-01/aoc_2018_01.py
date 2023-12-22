@@ -1,6 +1,6 @@
+from collections import deque
 from pathlib import Path
 from typing import NewType
-from collections import deque
 
 Data = NewType("Data", list[int])
 

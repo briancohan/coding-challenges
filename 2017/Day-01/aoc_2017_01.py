@@ -1,8 +1,8 @@
 import json
 import logging
+from functools import reduce
 from pathlib import Path
 from typing import NewType
-from functools import reduce
 
 Data = NewType("Data", list[int])
 
@@ -28,12 +28,17 @@ def part_1(data: Data) -> int:
 
 
 def part_2(data: Data) -> int:
-    return sum([a for a, b in zip(data, data[len(data) // 2 :] + data[: len(data) // 2]) if a == b])
+    return sum(
+        [
+            a
+            for a, b in zip(data, data[len(data) // 2 :] + data[: len(data) // 2])
+            if a == b
+        ]
+    )
 
 
 if __name__ == "__main__":
     data = parse_input()
-
 
     print(f"Part 1: {part_1(data)}")
     print(f"Part 2: {part_2(data)}")

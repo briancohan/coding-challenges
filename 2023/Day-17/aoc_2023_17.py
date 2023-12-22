@@ -1,9 +1,9 @@
 import logging
-from pathlib import Path
-from typing import NewType
-from operator import itemgetter
 from contextlib import suppress
 from itertools import product
+from operator import itemgetter
+from pathlib import Path
+from typing import NewType
 
 Data = NewType("Data", list[str])
 Point = NewType("Point", tuple[int, int])

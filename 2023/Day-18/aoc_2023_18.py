@@ -1,8 +1,8 @@
-from collections import deque
 import logging
+from collections import deque
+from itertools import chain
 from pathlib import Path
 from typing import NewType
-from itertools import chain
 
 Data = NewType("Data", list[tuple[str, int, str]])
 
