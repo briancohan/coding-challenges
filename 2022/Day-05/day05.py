@@ -1,8 +1,7 @@
+from collections import defaultdict, namedtuple
 from pathlib import Path
-from collections import defaultdict
 from string import ascii_uppercase
 from typing import NewType
-from collections import namedtuple
 
 Towers: NewType = dict[int, list[str]]
 Instruction = namedtuple("Instruction", ["qty", "from_tower", "to_tower"])

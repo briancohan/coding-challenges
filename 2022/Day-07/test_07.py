@@ -1,5 +1,6 @@
-import day07
 from collections import defaultdict
+
+import day07
 
 sample_input = """
 $ cd /

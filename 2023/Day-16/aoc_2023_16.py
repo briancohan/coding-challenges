@@ -19,7 +19,6 @@ def in_bounds(row: int, col: int, data: Data) -> bool:
 
 
 def get_next(node: Node, data: Data) -> list["Node"]:
-
     next_nodes = {
         # Pass Through
         (">", "."): [Node(node.row, node.col + 1, ">")],
@@ -96,21 +95,10 @@ def part_2(data: Data) -> int:
     nodes.extend(Node(r, c1, "<") for r in range(r0, r1))
 
     q = mp.Queue()
-    processes = []
-    energy = []
-
-    for node in nodes:
-        p = mp.Process(target=worker, args=(q, data, node))
-        processes.append(p)
-        p.start()
-
-    for p in processes:
-        energy.append(q.get())
-
-    for p in processes:
-        p.join()
-
-    return max(energy)
+    processes = [mp.Process(target=worker, args=(q, data, n)) for n in nodes]
+    [p.start() for p in processes]
+    [p.join() for p in processes]
+    return max([q.get() for _ in processes])
 
 
 if __name__ == "__main__":

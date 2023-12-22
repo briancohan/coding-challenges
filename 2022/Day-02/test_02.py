@@ -1,5 +1,5 @@
-import pytest
 import day02
+import pytest
 
 sample_input = """
 A Y

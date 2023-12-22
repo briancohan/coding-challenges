@@ -1,5 +1,5 @@
-import pytest
 import day03
+import pytest
 
 sample_input = """
 vJrwpWtwJgWrhcsFMMfFFhFp

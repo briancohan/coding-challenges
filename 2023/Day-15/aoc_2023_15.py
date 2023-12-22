@@ -1,6 +1,6 @@
+from collections import defaultdict
 from pathlib import Path
 from typing import NewType
-from collections import defaultdict
 
 Data = NewType("Data", list[str])
 

@@ -1,6 +1,6 @@
+from itertools import combinations
 from pathlib import Path
 from typing import NewType
-from itertools import combinations
 
 Data = NewType("Data", list[list[int]])
 
