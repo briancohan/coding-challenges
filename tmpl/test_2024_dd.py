@@ -1,4 +1,4 @@
-import aoc_yyyy_dd as challenge
+import tmpl.aoc_2024_dd as challenge
 
 sample_input = challenge.parse_input(full=False)
 full_input = challenge.parse_input()
