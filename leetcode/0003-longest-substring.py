@@ -25,6 +25,7 @@ Explanation
   instance.
 - Keep track of what the longest distance has been.
 """
+
 import pytest
 
 
@@ -46,7 +47,6 @@ class Solution(object):
             seen[char] = ix
             # Compute running max length
             max_length = max(max_length, ix - left + 1)
-
 
         return max_length
 
