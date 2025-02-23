@@ -52,7 +52,7 @@ class Solution(object):
 
 
 @pytest.mark.parametrize(
-    "s, expected",
+    "input, expected",
     [
         ("abcabcbb", 3),
         ("bbbbb", 1),
@@ -62,6 +62,6 @@ class Solution(object):
         ("aab", 2),
     ],
 )
-def test_examples(s: str, expected: int) -> None:
+def test_examples(input: str, expected: int) -> None:
     solution = Solution()
-    assert solution.lengthOfLongestSubstring(s) == expected
+    assert solution.lengthOfLongestSubstring(input) == expected

@@ -39,7 +39,7 @@ print(Solution().fizzBuzz(300))
 
 
 @pytest.mark.parametrize(
-    "n, expected",
+    "input, expected",
     [
         (3, ["1", "2", "Fizz"]),
         (5, ["1", "2", "Fizz", "4", "Buzz"]),
@@ -65,6 +65,6 @@ print(Solution().fizzBuzz(300))
         ),
     ],
 )
-def test_examples(n: int, expected: list[str]) -> None:
+def test_examples(input: int, expected: list[str]) -> None:
     solution = Solution()
-    assert solution.fizzBuzz(n) == expected
+    assert solution.fizzBuzz(input) == expected
