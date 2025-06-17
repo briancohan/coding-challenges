@@ -27,4 +27,4 @@ class Solution(object):
 )
 def test_examples(input, expected) -> None:
     solution = Solution()
-    assert solution.func(input) == expected
+    assert solution.func(*input) == expected
